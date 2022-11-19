@@ -1,0 +1,15 @@
+{
+    "files.associations": {
+        "head.h": "c",
+        "stdio.h": "c",
+        "types.h": "c",
+        "unistd.h": "c",
+        "string.h": "c",
+        "stat.h": "c",
+        "wait.h": "c",
+        "stdlib.h": "c",
+        "errno.h": "c",
+        "ipc.h": "c",
+        "shm.h": "c"
+    }
+}
