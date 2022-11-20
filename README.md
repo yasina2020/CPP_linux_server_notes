@@ -58,3 +58,61 @@
 
     git push -u origin master //把本地库的所有内容推送到远程库上
 
+
+## linux 安装完整的man手册
+
+1)、安装 C语言 库函数基本帮助文档:
+
+$ sudo apt-get install libc-dev
+
+$ sudo apt-get install glibc-doc
+
+$ sudo apt-get install manpages
+
+$ sudo apt-get install manpages-de
+
+$ sudo apt-get install manpages-de-dev
+
+$ sudo apt-get install manpages-dev
+
+2)、安装 POSIX 函数帮助文档：
+
+$ sudo apt-get install manpages-posix
+
+$ sudo apt-get install manpages-posix-dev
+
+3)、安装内核函数文档：
+
+$ sudo apt-get install linux-doc
+
+$ sudo apt-get install libcorelinux-dev
+
+4)、安装 C++ 帮助文档:
+
+$ sudo apt-get install libstdc++-7-dev
+
+$ sudo apt-get install libstdc++-7-doc
+
+
+
+当然!对于 manpage 可以直接一条命令：
+
+$ sudo apt-get install manpages*
+
+
+4、关于 manpage 颜色
+1)、在家目录下的 .bashrc 中加入下面代码来实现调色：
+
+export <font face = "Courier" size = 5 color = "#a52a2a">LESS_TERMCAP_mb=$'\E[01;32m'
+export <font face = "Courier" size = 5 color = "#a52a2a">LESS_TERMCAP_md=$'\E[01;36m'   # man description
+export <font face = "Courier" size = 5 color = "#a52a2a">LESS_TERMCAP_me=$'\E[0m'
+export <font face = "Courier" size = 5 color = "#a52a2a">LESS_TERMCAP_so=$'\E[01;32m'
+export <font face = "Courier" size = 5 color = "#a52a2a">LESS_TERMCAP_se=$'\E[0m' 
+export <font face = "Courier" size = 5 color = "#a52a2a">LESS_TERMCAP_us=$'\E[01;32m'  # underly select  
+export <font face = "Courier" size = 5 color = "#a52a2a">LESS_TERMCAP_ue=$'\E[0m' 
+
+目前只知道 b 为 bold，o 为 option
+
+2)、重新启动终端
+
+
