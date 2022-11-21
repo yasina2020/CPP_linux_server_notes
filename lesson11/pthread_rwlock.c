@@ -27,14 +27,18 @@ pthread_rwlock_unlock(pthread_rwlock_t *rwlock)
 这个感觉有bug
 
 */
-// #define _XOPEN_SOURCE 500
+
 
 #include <pthread.h>
 #include <stdio.h>
 #include <unistd.h>
+
+#define _XOPEN_SOURCE 500
+
 int num = 100;
+
 pthread_rwlock_t rwlock;
-int cnt = 100;
+
 void *my_call_w(){
     int cnt = 20;
     while(cnt--){
