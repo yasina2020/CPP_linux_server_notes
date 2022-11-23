@@ -15,6 +15,8 @@
 #include <sys/stat.h>
 #include <signal.h>
 #include <sys/wait.h>
+#include <bits/sigaction.h>
+
 // 收到SIGCHLD信号后会调用该函数
 void my_call(int signal_number){
     // 利用waitpid回收子进程

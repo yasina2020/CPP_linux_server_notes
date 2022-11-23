@@ -10,7 +10,7 @@ struct sockaddr{
 
 
 专用socket地址（比通用的方便）
-struct socketaddr_in{
+struct sockaddr_in{
     sa_family_t sa_family;
     in_port_t sin_port;
     struct in_addr sin_addr;
@@ -45,6 +45,7 @@ char *inrt_ntoa(struct in_addr in);
 
 // 新的API
 int inet_pton(int af,const char *src,void *dst);
+          inet_pton(AF_INET,"127.0.0.1",&server_addr.sin_addr.s_addr);
 //点分十进制的字符串 转化 为网络字节序的整数
 
 const char *inet_ntop(int af,const void*src, char *dst,socklen_t size);

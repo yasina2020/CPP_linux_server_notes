@@ -105,7 +105,7 @@ struct sigaction {
 #include <sys/time.h>
 #include <signal.h>
 #include <stdlib.h>
-
+#include <bits/sigaction.h>
 void my_call(int num){
     printf("这是回调函数，信号是：%d\n",num);
 }

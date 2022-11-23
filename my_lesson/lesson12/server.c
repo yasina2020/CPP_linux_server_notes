@@ -18,7 +18,7 @@ int main(){
     server_addr.sin_family = PF_INET;
     server_addr.sin_port = htons(2202);
     server_addr.sin_addr.s_addr = inet_addr("127.0.0.1");
-    // inet_pton(AF_INET,"127.0.0.1",server_addr.sin_addr.s_addr);
+    // inet_pton(AF_INET,"127.0.0.1",&server_addr.sin_addr.s_addr);
 
     bind(listen_fd,(const struct sockaddr *)&server_addr,sizeof(server_addr));
 
