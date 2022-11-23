@@ -22,20 +22,33 @@ int main(){
     
 // 3、业务处理
     char buf[1024] = {0};
-    int i;
+    // int i=0;
     while(1){
-        sleep(2);
-        sprintf(buf,"client write data:%d\n",i++);
+
+        printf("请输入要发送的内容:\n");
+        fgets(buf, sizeof(buf), stdin);
         int w_len = write(client_fd,buf,sizeof(buf));
         if(w_len == 0){
-            printf("server is close...\n");
+            printf("服务器已关闭，客户端即将退出...\n");
+            sleep(1);
+            break;
         }else if(w_len == -1){
             perror("write:");
             exit(0);
         }
         memset(buf,0,sizeof(buf));
         int r_len = read(client_fd,buf,sizeof(buf));
-        printf("server send data is : %s\n",buf);
+        if(r_len == 0){
+            printf("服务器已关闭，客户端即将退出...\n");
+            sleep(1);
+            break;
+        }else if(r_len == -1){
+            perror("write:");
+            break;
+        }else{
+            printf("服务器发送的数据是: %s\n",buf);
+        }
+        
     }
     close(client_fd);
     return 0;
