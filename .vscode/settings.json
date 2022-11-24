@@ -13,6 +13,7 @@
         "shm.h": "c",
         "pthread.h": "c",
         "signal.h": "c",
-        "sigaction.h": "c"
+        "sigaction.h": "c",
+        "inet.h": "c"
     }
 }

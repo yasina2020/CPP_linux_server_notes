@@ -1,0 +1,13 @@
+//半关闭
+
+当TCP连接中A->B发送FIN请求关闭，B回应ACK之后（A进入FIN_WAIT_2状态），并
+没有立即发送FIN给A，A方处于半连接状态，此时A可以接收B发送的数据，
+但是A已经不能再像B发送数据
+
+#include <sys/socket.h>
+int shutdown(int fd,int how);
+fd:需要关闭的socket描述符
+how:
+    SHUT_RD关闭读功能
+    SHUT_WR关闭写功能
+    SHUT_RDWR关闭读写功能
