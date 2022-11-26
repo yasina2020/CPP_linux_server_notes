@@ -29,6 +29,8 @@ int main(){
         }else if(w_len == -1){
             perror("write:");
             exit(0);
+        }else{
+            printf("客户端已发送...\n");
         }
         memset(buf,0,sizeof(buf));
         int r_len = read(client_fd,buf,sizeof(buf));
