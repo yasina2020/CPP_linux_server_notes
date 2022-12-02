@@ -14,6 +14,20 @@
         "pthread.h": "c",
         "signal.h": "c",
         "sigaction.h": "c",
-        "inet.h": "c"
+        "inet.h": "c",
+        "*.tcc": "cpp",
+        "cmath": "cpp",
+        "compare": "cpp",
+        "concepts": "cpp",
+        "cstdio": "cpp",
+        "cstdlib": "cpp",
+        "list": "cpp",
+        "exception": "cpp",
+        "initializer_list": "cpp",
+        "limits": "cpp",
+        "new": "cpp",
+        "cstdint": "cpp",
+        "type_traits": "cpp",
+        "typeinfo": "cpp"
     }
 }
