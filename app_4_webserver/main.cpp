@@ -123,7 +123,7 @@ int main( int argc, char* argv[] ) {
             } else if(events[i].events & EPOLLIN) {
 
                 if(users[sockfd].read()) {
-                    pool->append(users[sockfd]);
+                    pool->append(users+sockfd);
                 } else {
                     users[sockfd].close_conn();
                 }

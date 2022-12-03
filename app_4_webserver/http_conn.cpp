@@ -25,10 +25,22 @@ int setnonblocking( int fd ) {
 void addfd( int epollfd, int fd, bool one_shot ) {
     epoll_event event;
     event.data.fd = fd;
+    // 对端连接断开触发的 epoll 事件会包含 EPOLLIN | EPOLLRDHUP，即 0x2001。
+    // 有了这个事件，对端断开连接的异常就可以在底层进行处理了，不用再移交到上层
     event.events = EPOLLIN | EPOLLRDHUP;
     if(one_shot) 
     {
         // 防止同一个通信被不同的线程处理
+        /*
+            epoll有两种触发的方式即LT（水平触发）和ET（边缘触发）两种，在前者，只要存在着事件就会不断的触发，直到处理完成，
+        而后者只触发一次相同事件或者说只在从非触发到触发两个状态转换的时候儿才触发。
+            这会出现如下情况：如果是多线程在处理，一个SOCKET事件到来，数据开始解析，这时候这个SOCKET又来了同样一个这样的事件，
+        而你的数据解析尚未完成，那么程序会自动调度另外一个线程或者进程来处理新的事件，这造成一个很严重的问题，
+        不同的线程或者进程在处理同一个SOCKET的事件，即使在ET模式下也有可能出现这种情况！！
+            可以在epoll上注册EPOLLONESHOT事件，注册后，如果在处理写成当前的SOCKET后不再重新注册相关事件，
+        那么这个事件就不再响应了或者说触发了。要想重新注册事件则需要调用epoll_ctl重置文件描述符上的事件，
+        这样前面的socket就不会出现竞态这样就可以通过手动的方式来保证同一SOCKET只能被一个线程处理，不会跨越多个线程。
+        */ 
         event.events |= EPOLLONESHOT;
     }
     epoll_ctl(epollfd, EPOLL_CTL_ADD, fd, &event);
