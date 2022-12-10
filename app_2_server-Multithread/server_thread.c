@@ -89,7 +89,7 @@ void *my_call(void * arg){
 }
 
 int main(){
-
+// socket流程
     int listen_fd = socket(PF_INET,SOCK_STREAM,0);
 
     struct sockaddr_in addr;
@@ -114,6 +114,7 @@ int main(){
         while(have_fd == 0){
             sleep(1);
         }
+        // 接收新客户端连接
         int client_fd = accept(listen_fd,(struct sockaddr*)&client_addr,&client_addr_len);
         if(client_fd == -1){
             if(errno == EINTR){
@@ -125,10 +126,12 @@ int main(){
 
         for(int i=0;i < MAX_CLIENT;i++){
             printf("i:%d,fd:%d,tid:%ld\n",i,client_info[i].client_fd,client_info[i].tid);
+            // 找到一个没有被使用的i
             if(i == MAX_CLIENT - 1 && client_info[i].client_fd != -1){
                 i = 0;
                 break;
             }
+            // 找到之后，创建一个线程来处理业务
             if(client_info[i].client_fd == -1){
                 client_info[i].client_fd = client_fd;
                 memcpy(&client_info[i].client_addr,&client_addr,sizeof(client_addr));
