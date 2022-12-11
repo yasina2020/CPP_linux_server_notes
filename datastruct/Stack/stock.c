@@ -67,6 +67,15 @@ int PStack(Stack *stack){
     
     return 0;
 }
+
+
+
+// stack的应用：
+// 1、括号匹配(伪代码)
+
+// 2、后缀表达式求值
+
+
 int main(){
     Stack *s = initStack();
     Node *node = initNode(10);

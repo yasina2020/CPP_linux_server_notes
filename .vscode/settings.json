@@ -28,6 +28,21 @@
         "new": "cpp",
         "cstdint": "cpp",
         "type_traits": "cpp",
-        "typeinfo": "cpp"
+        "typeinfo": "cpp",
+        "link.h": "c",
+        "string": "cpp",
+        "cctype": "cpp",
+        "clocale": "cpp",
+        "cwchar": "cpp",
+        "iosfwd": "cpp",
+        "numbers": "cpp",
+        "string_view": "cpp",
+        "cwctype": "cpp",
+        "iostream": "cpp",
+        "istream": "cpp",
+        "ostream": "cpp",
+        "stdexcept": "cpp",
+        "streambuf": "cpp",
+        "system_error": "cpp"
     }
 }
